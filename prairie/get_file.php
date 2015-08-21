@@ -80,7 +80,7 @@ if (isset($file)) {
 	else {
 		header("Content-type: image/png");
 		
-		readfile('template/' . $core_config['am']['template_name'] . '/img/no_avatar_60.png');
+		readfile('theme/' . $core_config['am']['template_name'] . '/img/no_avatar_60.png');
 	}
 }
 
