@@ -25,7 +25,8 @@
 ?>
 
 <div id="col_left">
-	<div class="box" id="box_contact">
+    <?php if (isset($registration_allowed)): ?>
+	<div class="box" id="box_contact" style="display: none;">
 		<div class="box_header">
 			<h1>Contact us</h1>
 		</div>
@@ -71,7 +72,7 @@
 		</div>
 		</form>
 	</div>
-
+    <?php endif; ?>
 	<?php
 	if (isset($uri_routing[1]) && $uri_routing[1] == "policy") {
 	?>
@@ -140,7 +141,9 @@
 		</div>
 
 		<div class="box_footer">
-			<span onclick="javascript:objShowHide('box_contact');" class="span_link"><?php echo _("Contact us");?></span>
+		  <?php if (isset($registration_allowed)): ?>
+  		    <span onclick="javascript:objShowHide('box_contact');" class="span_link"><?php echo _("Contact us");?></span>
+  		  <?php endif; ?>
 		</div>
 	</div>
 </div>

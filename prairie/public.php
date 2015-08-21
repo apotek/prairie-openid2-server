@@ -62,7 +62,7 @@ if (isset($_POST['send_email'])) {
 	}
 }
 
-if (isset($core_config['script']['multiple_webspace_pattern'])) {
+if (isset($core_config['script']['multiple_webspace_pattern']) && isset($core_config['registration']['allow_registration']) && $core_config['registration']['allow_registration']) {
 	$body->set('registration_allowed', 1);
 }
 
