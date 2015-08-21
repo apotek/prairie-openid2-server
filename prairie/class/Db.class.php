@@ -52,8 +52,8 @@ class Database {
 				$GLOBALS['script_error_log'][] = $error_message;
 			}
 			else {
-				$db->prefix = $this->db_config['prefix'];
-
+				#$db->prefix = $this->db_config['prefix'];
+                                $this->prefix = $this->db_config['prefix'];
 				// set up database collation
 				$query = "SET NAMES 'utf8'";
 				$this->Execute($query);
@@ -114,7 +114,11 @@ class Database {
 	function qstr($s) {
 		
 		if (!get_magic_quotes_gpc()) {
- 			$s =  mysql_real_escape_string($s);
+  		  if (!isset($this->connection)) {
+  			$this->newConnection();
+  		  }
+
+ 			$s =  mysql_real_escape_string($s, $this->connection);
 		}
 		return "'" . $s . "'";
 	}
